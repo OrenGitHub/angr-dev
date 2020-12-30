@@ -375,7 +375,12 @@ function clone_repo
 	info "Cloning repo $NAME."
 	for r in $REMOTES
 	do
-		URL="$r/$NAME"
+		if [ "$NAME" != "angr" ]
+		then
+			URL="$r/$NAME"
+		else
+			URL="https://gitlab.com/OrenVdooGitLab/angr.git"
+		fi
 		try_remote $URL && debug "Success - $NAME cloned!" && break
 	done
 
